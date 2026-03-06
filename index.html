@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>teamX — Culturally Intelligent Innovation for the UAE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --surface: #1a1a1a;
+      --border: #262626;
+      --border2: #333333;
+      --text: #f5f5f5;
+      --muted: #737373;
+      --accent: #ffffff;
+      --teamx-grey: #484848;
+      --white: #ffffff;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 102;
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: ticker 35s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 36px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ticker-item .dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--teamx-grey);
+      flex-shrink: 0;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 39px; left: 0; right: 0;
+      z-index: 101;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px;
+      height: 64px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo-mark {
+      background: var(--teamx-grey);
+      padding: 7px 15px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+      letter-spacing: -0.3px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--white) !important;
+      color: #000 !important;
+      padding: 9px 20px !important;
+      border-radius: 6px !important;
+      font-weight: 600 !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 60px 40px;
+      margin-top: 103px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 55% at 50% 42%, rgba(72,72,72,0.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: 100px;
+      padding: 6px 14px 6px 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 36px;
+      animation: rise 0.6s 0.1s ease both;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulsate 2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulsate {
+      0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+      70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+      100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6.5vw, 5.8rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -2.5px;
+      color: var(--white);
+      max-width: 880px;
+      animation: rise 0.6s 0.2s ease both;
+    }
+    .hero h1 .dim { color: var(--muted); font-weight: 300; display: block; }
+    .hero-sub {
+      max-width: 540px;
+      margin: 28px auto 0;
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.8;
+      animation: rise 0.6s 0.3s ease both;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 600; }
+    .hero-actions {
+      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+      margin-top: 40px;
+      animation: rise 0.6s 0.4s ease both;
+    }
+    .btn-primary {
+      background: var(--white); color: #000;
+      font-weight: 600; font-size: 0.875rem;
+      padding: 13px 28px; border-radius: 7px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: var(--muted);
+      font-weight: 500; font-size: 0.875rem;
+      padding: 13px 28px; border-radius: 7px;
+      border: 1px solid var(--border2);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #555; color: var(--white); }
+    .hero-stats {
+      display: flex; gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      margin-top: 72px;
+      animation: rise 0.6s 0.5s ease both;
+    }
+    .stat-item {
+      padding: 28px 36px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 1.7rem; font-weight: 800;
+      color: var(--white); letter-spacing: -1px; line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.68rem; text-transform: uppercase;
+      letter-spacing: 1.2px; color: var(--muted);
+      margin-top: 8px; font-weight: 500;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SHARED ── */
+    section { padding: 96px 60px; }
+    .lbl {
+      font-size: 0.68rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 2.5px;
+      color: var(--muted); margin-bottom: 14px;
+    }
+    h2.ttl {
+      font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+      font-weight: 800; letter-spacing: -1.2px;
+      color: var(--white); line-height: 1.1; margin-bottom: 18px;
+    }
+    .dsc {
+      font-size: 0.975rem; color: var(--muted);
+      line-height: 1.8; max-width: 520px;
+    }
+    .sh { margin-bottom: 52px; }
+
+    /* ── WHO WE ARE ── */
+    .who { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .who-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .tag {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px;
+      color: var(--muted); background: var(--surface);
+      border: 1px solid var(--border2); border-radius: 5px; padding: 5px 12px;
+    }
+    .who-right blockquote {
+      border-left: 2px solid var(--border2); padding-left: 24px; margin-bottom: 28px;
+    }
+    .who-right blockquote p {
+      font-size: 1.05rem; font-weight: 300; font-style: italic;
+      color: var(--text); line-height: 1.8;
+    }
+    .who-right .body { font-size: 0.925rem; color: var(--muted); line-height: 1.85; }
+
+    /* ── WHAT WE DO ── */
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    }
+    .diff-card { background: var(--bg); padding: 40px 32px; transition: background 0.2s; }
+    .diff-card:hover { background: var(--surface); }
+    .diff-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; color: var(--border2); margin-bottom: 18px; }
+    .diff-card h3 { font-size: 1rem; font-weight: 700; color: var(--white); letter-spacing: -0.2px; margin-bottom: 10px; }
+    .diff-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── SLM ── */
+    .slm-wrap { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-top: 52px; }
+    .slm-head { background: var(--surface); padding: 28px 36px; border-bottom: 1px solid var(--border); }
+    .slm-head h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .slm-head p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .slm-steps { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .slm-step { padding: 28px 26px; border-right: 1px solid var(--border); transition: background 0.2s; }
+    .slm-step:last-child { border-right: none; }
+    .slm-step:hover { background: var(--surface); }
+    .slm-n { font-size: 0.62rem; font-weight: 700; letter-spacing: 2px; color: var(--border2); margin-bottom: 10px; }
+    .slm-step h4 { font-size: 0.875rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .slm-step p { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── IDEAL FOR ── */
+    .ideal { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .ideal-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .sector-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 24px 20px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .sector-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .s-icon { font-size: 1.3rem; margin-bottom: 10px; }
+    .sector-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .sector-card p { font-size: 0.77rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .contact-section h2.ttl { max-width: 100%; }
+    .contact-section .dsc { margin: 0 auto 44px; text-align: center; max-width: 500px; }
+    .contact-cards { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; }
+    .contact-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 24px 28px;
+      text-align: left; text-decoration: none;
+      display: flex; flex-direction: column; gap: 7px;
+      min-width: 200px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .contact-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .cc-lbl { font-size: 0.62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+    .cc-val { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 52px 60px 0;
+      border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .fb-logo {
+      display: inline-block; background: var(--teamx-grey);
+      padding: 6px 14px; border-radius: 5px;
+      font-weight: 800; font-size: 0.925rem; color: #fff;
+      letter-spacing: -0.2px; margin-bottom: 16px;
+    }
+    .footer-brand p { font-size: 0.83rem; color: var(--muted); max-width: 250px; line-height: 1.7; }
+    .footer-col h5 { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      grid-column: 1 / -1;
+      margin-top: 52px; padding: 20px 0;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p { font-size: 0.77rem; color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      section { padding: 64px 24px; }
+      .who-inner, .ideal-inner { grid-template-columns: 1fr; gap: 40px; }
+      .diff-grid { grid-template-columns: 1fr 1fr; }
+      .slm-steps { grid-template-columns: 1fr 1fr; }
+      footer { grid-template-columns: 1fr 1fr; }
+      .hero-stats { flex-wrap: wrap; }
+    }
+    @media (max-width: 600px) {
+      .diff-grid, .slm-steps, .sector-grid { grid-template-columns: 1fr; }
+      footer { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .hero h1 { letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Cultural Intelligence <span class="dot"></span></span>
+    <span class="ticker-item">Smart Localisation Model™ <span class="dot"></span></span>
+    <span class="ticker-item">UAE Market Entry <span class="dot"></span></span>
+    <span class="ticker-item">AI Readiness Programs <span class="dot"></span></span>
+    <span class="ticker-item">Digital Transformation <span class="dot"></span></span>
+    <span class="ticker-item">Government &amp; Enterprise <span class="dot"></span></span>
+    <span class="ticker-item">Innovation Advisory <span class="dot"></span></span>
+    <span class="ticker-item">Trust by Design <span class="dot"></span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item">Cultural Intelligence <span class="dot"></span></span>
+    <span class="ticker-item">Smart Localisation Model™ <span class="dot"></span></span>
+    <span class="ticker-item">UAE Market Entry <span class="dot"></span></span>
+    <span class="ticker-item">AI Readiness Programs <span class="dot"></span></span>
+    <span class="ticker-item">Digital Transformation <span class="dot"></span></span>
+    <span class="ticker-item">Government &amp; Enterprise <span class="dot"></span></span>
+    <span class="ticker-item">Innovation Advisory <span class="dot"></span></span>
+    <span class="ticker-item">Trust by Design <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo-mark" href="#">teamX</a>
+  <ul class="nav-links">
+    <li><a href="#who">Who We Are</a></li>
+    <li><a href="#diff">What We Do</a></li>
+    <li><a href="#ideal">Who We Serve</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="pulse-dot"></span>
+    UAE-Focused Innovation Partner
+  </div>
+  <h1>
+    The UAE buys big.
+    <span class="dim">Will they buy from you?</span>
+  </h1>
+  <p class="hero-sub">
+    A high-spending, multicultural audience. Strong digital adoption. Regulatory openness. But success depends on targeted outreach, localised messaging, and <strong>trust</strong>.
+  </p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Start a Conversation →</a>
+    <a href="#who" class="btn-ghost">Learn More</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">UAE</div>
+      <div class="stat-label">Market Focus</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">SLM™</div>
+      <div class="stat-label">Proprietary Model</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Gov+</div>
+      <div class="stat-label">Enterprise Clients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Culture-First</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="who" id="who">
+  <div class="who-inner">
+    <div>
+      <div class="lbl">🧠 Who We Are</div>
+      <h2 class="ttl">We Close the Gap Between Technology and Culture</h2>
+      <p class="dsc">Many companies enter the UAE market with strong technology and ambition but struggle to connect — because their products and strategies are not designed with local context in mind. Our work closes that gap.</p>
+      <div class="tag-list">
+        <span class="tag">Cultural Intelligence</span>
+        <span class="tag">UAE Vision Aligned</span>
+        <span class="tag">AI Readiness</span>
+        <span class="tag">Trust-First Strategy</span>
+        <span class="tag">Regulatory Openness</span>
+        <span class="tag">Digital Transformation</span>
+      </div>
+    </div>
+    <div class="who-right">
+      <blockquote>
+        <p>"We help global and regional organisations grow in the UAE by creating innovation that respects the culture, values and expectations of this country."</p>
+      </blockquote>
+      <p class="body">
+        Our work supports leaders who want to modernise responsibly and move fast — without losing alignment with local norms and regulatory expectations. We combine practical innovation advisory, AI readiness programs, and industry-specific sandbox environments that allow teams to test and scale solutions with confidence.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT MAKES US DIFFERENT -->
+<section id="diff">
+  <div class="sh">
+    <div class="lbl">🚀 What Makes Us Different</div>
+    <h2 class="ttl">The Smart Localisation Model™</h2>
+    <p class="dsc">We created the SLM™ to help enterprises adopt AI and digital transformation in a way that feels natural, meaningful, and aligned with the UAE's vision for the future — bringing cultural intelligence into every stage of innovation.</p>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-num">01</div>
+      <h3>Cultural Intelligence at Every Stage</h3>
+      <p>From discovery to design to execution — SLM ensures your innovation resonates with the people it's built for, not just the technology behind it.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">02</div>
+      <h3>AI Readiness Programs</h3>
+      <p>Structured programs that prepare your teams for responsible, scalable digital transformation — at a pace that builds confidence.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">03</div>
+      <h3>Industry Sandbox Environments</h3>
+      <p>Safe, sector-specific environments to test and validate solutions before full deployment — reducing risk while accelerating progress.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">04</div>
+      <h3>Trust &amp; Adoption by Design</h3>
+      <p>Our approach builds trust, improves adoption, and delivers real results — because technology that isn't adopted delivers no value at all.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">05</div>
+      <h3>Regulatory Alignment</h3>
+      <p>We keep you moving forward with confidence — fully aligned with the UAE's evolving regulatory and compliance landscape at every step.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-num">06</div>
+      <h3>Regional + Global Perspective</h3>
+      <p>Deep UAE cultural expertise combined with global technology best practices — so every decision reflects both worlds simultaneously.</p>
+    </div>
+  </div>
+
+  <div class="slm-wrap">
+    <div class="slm-head">
+      <h3>Smart Localisation Model™ — The Four Stages</h3>
+      <p>A structured process that brings cultural intelligence into your full innovation journey — from first insight to lasting impact.</p>
+    </div>
+    <div class="slm-steps">
+      <div class="slm-step">
+        <div class="slm-n">STAGE 01</div>
+        <h4>Discovery</h4>
+        <p>Cultural and market analysis to understand local context, user expectations, and regulatory landscape.</p>
+      </div>
+      <div class="slm-step">
+        <div class="slm-n">STAGE 02</div>
+        <h4>Design</h4>
+        <p>Strategy and product design that integrates cultural intelligence into every user touchpoint and workflow.</p>
+      </div>
+      <div class="slm-step">
+        <div class="slm-n">STAGE 03</div>
+        <h4>Sandbox</h4>
+        <p>Controlled testing in industry-specific environments to validate, refine, and build confidence before scale.</p>
+      </div>
+      <div class="slm-step">
+        <div class="slm-n">STAGE 04</div>
+        <h4>Execution</h4>
+        <p>Full deployment with ongoing advisory support — ensuring sustainable impact and outcomes that last.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDEAL FOR -->
+<section class="ideal" id="ideal">
+  <div class="ideal-inner">
+    <div>
+      <div class="lbl">🧩 Ideal For</div>
+      <h2 class="ttl">Organisations Built to Lead in the Region</h2>
+      <p class="dsc">
+        Our clients include government entities, large enterprises, and high-growth organisations across aviation, real estate, finance and public services.
+      </p>
+      <p class="dsc" style="margin-top:18px;">
+        They work with us because they want outcomes that fit the region. Technology that works for their teams and communities. Partners who understand the ambition of the UAE and the importance of honouring its identity.
+      </p>
+      <p class="dsc" style="margin-top:18px; font-style: italic; color: var(--text); opacity: 0.6;">
+        If you are building for the region and want a partner who understands both the technology and the culture — we are here to support you.
+      </p>
+    </div>
+    <div class="sector-grid">
+      <div class="sector-card">
+        <div class="s-icon">🏛️</div>
+        <h4>Government</h4>
+        <p>Public sector innovation with regulatory and cultural alignment built in.</p>
+      </div>
+      <div class="sector-card">
+        <div class="s-icon">✈️</div>
+        <h4>Aviation</h4>
+        <p>AI and digital transformation for one of the UAE's flagship industries.</p>
+      </div>
+      <div class="sector-card">
+        <div class="s-icon">🏗️</div>
+        <h4>Real Estate</h4>
+        <p>Smart localisation for high-value property and development platforms.</p>
+      </div>
+      <div class="sector-card">
+        <div class="s-icon">🏦</div>
+        <h4>Finance</h4>
+        <p>Responsible fintech adoption with trust-first frameworks at the core.</p>
+      </div>
+      <div class="sector-card">
+        <div class="s-icon">🏥</div>
+        <h4>Public Services</h4>
+        <p>Human-centred innovation for essential community services at scale.</p>
+      </div>
+      <div class="sector-card">
+        <div class="s-icon">🚀</div>
+        <h4>High-Growth Orgs</h4>
+        <p>Ambitious companies ready to own their segment in the UAE market.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="lbl">📞 Contact</div>
+  <h2 class="ttl">Ready to Grow in the UAE?</h2>
+  <p class="dsc">
+    If you are building for the region and want a partner who understands both the technology and the culture — we are here to support you.
+  </p>
+  <div class="contact-cards">
+    <a class="contact-card" href="mailto:teamxreach@gmail.com">
+      <span class="cc-lbl">📧 Email</span>
+      <span class="cc-val">teamxreach@gmail.com</span>
+    </a>
+    <a class="contact-card" href="http://wa.me/918075357613" target="_blank">
+      <span class="cc-lbl">💬 WhatsApp</span>
+      <span class="cc-val">+91 807 535 7613</span>
+    </a>
+    <a class="contact-card" href="#contact">
+      <span class="cc-lbl">📋 Contact Form</span>
+      <span class="cc-val">Send a Message →</span>
+    </a>
+  </div>
+  <div class="cta-row">
+    <a href="http://wa.me/918075357613" class="btn-primary" target="_blank">WhatsApp Us</a>
+    <a href="mailto:teamxreach@gmail.com" class="btn-ghost">Email Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="fb-logo">teamX</div>
+    <p>Culturally intelligent innovation for organisations growing in the UAE. We bridge technology and culture — responsibly, and at speed.</p>
+  </div>
+  <div class="footer-col">
+    <h5>About</h5>
+    <ul>
+      <li><a href="#who">Who We Are</a></li>
+      <li><a href="#diff">What We Do</a></li>
+      <li><a href="#ideal">Who We Serve</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Sectors</h5>
+    <ul>
+      <li><a href="#ideal">Government</a></li>
+      <li><a href="#ideal">Aviation</a></li>
+      <li><a href="#ideal">Real Estate</a></li>
+      <li><a href="#ideal">Finance</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Contact</h5>
+    <ul>
+      <li><a href="mailto:teamxreach@gmail.com">teamxreach@gmail.com</a></li>
+      <li><a href="http://wa.me/918075357613" target="_blank">WhatsApp</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 teamX. All rights reserved.</p>
+    <p>Built for the UAE. Trusted by the region.</p>
+  </div>
+</footer>
+
+</body>
+</html>
